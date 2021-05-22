@@ -74,7 +74,7 @@ effect_GY=c(rmvnorm(n=1,sigma=A))
 se_GY=rep(1,p)
 LDcov=A
 
-### We assume effect_GX are weights from previous studies based on joint models with variable selection (e.g. eNet) and se(effect_GX) is not available
+##### We assume effect_GX are weights from previous studies based on joint models with variable selection (e.g. eNet) and se(effect_GX) is not available
 effect_GX=c(rmvnorm(n=1,sigma=ginv(A)))
 
 #TEDE-Sc only (TEDE-Sc2 cannot be applied since se(effect_GX) is not available)
