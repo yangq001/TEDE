@@ -4,6 +4,8 @@ TEsting Direct Effects for MR (Mendelian Randomization) or TWAS (Transcriptome-W
 Please intall the package (TEDE_0.19.tar.gz) and check the help document
 ?TEDE
 
+Required packages: aSPU, jointsum
+
 Usage:
 TEDE(effect_GX,se_GX=c(),effect_GY,se_GY,GX_joint=FALSE,GY_joint=FALSE,n1,n2,LDcov,correlated_snps=TRUE,method="aSPU",distribution_based=FALSE,n.perm=1000)
 
@@ -22,63 +24,3 @@ distribution_based: FALSE: apply the standard aSPU test with summary statistics;
 n.perm: the number of iterations for the aSPU test. No need to specify this if distribution_based is TRUE.
 
 result: a table containing the p-values.
-
-
-Example:
-library(aSPU)
-library(TEDE)
-
-##### Testing horizontal pleiotropy for MR
-set.seed(1)
-p=20
-n1=n2=100
-effect_GX=rnorm(p)
-se_GX=rep(1,p)
-effect_GY=rnorm(p)
-se_GY=rep(1,p)
-LDcov=diag(p)
-
-#TEDE-Sc and TEDE-Sc2
-TEDE(effect_GX=effect_GX,se_GX=se_GX,effect_GY=effect_GY,se_GY=se_GY,n1=n1,n2=n2,LDcov=LDcov,correlated_snps=FALSE,method="score")
-
-#TEDE-aSPU and TEDE-aSPU2
-TEDE(effect_GX=effect_GX,se_GX=se_GX,effect_GY=effect_GY,se_GY=se_GY,n1=n1,n2=n2,LDcov=LDcov,correlated_snps=FALSE,method="aSPU",distribution_based=TRUE)
-
-
-##### Testing horizontal pleiotropy for TWAS
-set.seed(1)
-p=20
-n1=n2=100
-A=diag(p)
-A[1,2]=A[2,1]=0.3
-effect_GX=c(rmvnorm(n=1,sigma=A))
-se_GX=rep(1,p)
-effect_GY=c(rmvnorm(n=1,sigma=A))
-se_GY=rep(1,p)
-LDcov=A
-
-#TEDE-Sc and TEDE-Sc2
-TEDE(effect_GX=effect_GX,se_GX=se_GX,effect_GY=effect_GY,se_GY=se_GY,n1=n1,n2=n2,LDcov=LDcov,correlated_snps=TRUE,method="score")
-
-#TEDE-aSPU and TEDE-aSPU2
-TEDE(effect_GX=effect_GX,se_GX=se_GX,effect_GY=effect_GY,se_GY=se_GY,n1=n1,n2=n2,LDcov=LDcov,correlated_snps=TRUE,method="aSPU",distribution_based=TRUE)
-
-
-##### Testing horizontal pleiotropy for TWAS using weights
-set.seed(1)
-p=20
-n1=n2=100
-A=diag(p)
-A[1,2]=A[2,1]=0.3
-effect_GY=c(rmvnorm(n=1,sigma=A))
-se_GY=rep(1,p)
-LDcov=A
-
-##### We assume effect_GX are weights from previous studies based on joint models with variable selection (e.g. eNet) and se(effect_GX) is not available
-effect_GX=c(rmvnorm(n=1,sigma=ginv(A)))
-
-#TEDE-Sc only (TEDE-Sc2 cannot be applied since se(effect_GX) is not available)
-TEDE(effect_GX=effect_GX,effect_GY=effect_GY,se_GY=se_GY,GX_joint=TRUE,n1=n1,n2=n2,LDcov=LDcov,correlated_snps=TRUE,method="score")
-
-#TEDE-aSPU only (TEDE-aSPU2 cannot be applied since se(effect_GX) is not available)
-TEDE(effect_GX=effect_GX,effect_GY=effect_GY,se_GY=se_GY,GX_joint=TRUE,n1=n1,n2=n2,LDcov=LDcov,correlated_snps=TRUE,method="aSPU",distribution_based=TRUE)
