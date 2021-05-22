@@ -1,87 +1,30 @@
 # TEDE
-TEsting Direct Effects (for MR or TWAS)
+TEsting Direct Effects for MR (Mendelian Randomization) or TWAS (Transcriptome-Wide Association Studies)
 
 Please intall the package (TEDE_0.19.tar.gz) and check the help document
 ?TEDE
 
-\name{TEDE}
-\alias{TEDE}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-TEDE
-}
-\description{
-TEsting Direct Effects (for MR or TWAS)
-}
-\usage{
+Usage:
 TEDE(effect_GX,se_GX=c(),effect_GY,se_GY,GX_joint=FALSE,GY_joint=FALSE,n1,n2,LDcov,correlated_snps=TRUE,method="aSPU",distribution_based=FALSE,n.perm=1000)
-}
-%- maybe also 'usage' for other objects documented here.
-\arguments{
-  \item{effect_GX}{
-    a vector containing the effect sizes of p SNPs on X.
-  }
-  \item{se_GX}{
-    a vector containing the standard errors of effect_GX. Do not specify this if this information is unavailable, in which case TEDE-Sc2 and TEDE-aSPU2 will not be performed.
-  }
-  \item{effect_GY}{
-    a vector containing the effect sizes of p SNPs on Y.
-  }
-  \item{se_GY}{
-    a vector containing the standard errors of effect_GY.
-  }
-  \item{GX_joint}{
-    FALSE: the G->X effects are based on marginal models; TRUE: the G->X effects are based on joint models.
-  }
-  \item{GY_joint}{
-    FALSE: the G->Y effects are based on marginal models; TRUE: the G->Y effects are based on joint models.
-  }
-  \item{n1}{
-    the sample size used to get effect_GX. No need to specify this if GX_joint is TRUE.
-  }
-  \item{n2}{
-    the sample size used to get effect_GY. No need to specify this if GY_joint is TRUE.
-  }
-  \item{LDcov}{
-    a covariance matrix of the p SNPs estimated from a reference panel.
-  }
-  \item{correlated_snps}{
-    whether the SNPs are correlated. Usually MR uses uncorrelated SNPs, and TWAS uses correlated SNPs.
-  }
-  \item{method}{
-    "aSPU": TEDE-aSPU (and TEDE-aSPU2); "score": TEDE-Sc (and TEDE-Sc2).
-  }
-  \item{distribution_based}{
-    FALSE: apply the standard aSPU test with summary statistics; TRUE: apply the distribution-based aSPU test. No need to specify this if method is "score".
-  }
-  \item{n.perm}{
-    the number of iterations for the aSPU test. No need to specify this if distribution_based is TRUE.
-  }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-  \item{result}{
-    a table containing the p-values.
-  }
-}
-\references{
-%Deng, Y., Pan, W. (2017). Conditional analysis of multiple quantitative traits based on marginal GWAS summary statistics. Genet Epidemiol. doi: 10.1002/gepi.22046.
-}
-\author{
-Yangqing Deng and Wei Pan.
-}
-\note{
-%%  ~~further notes~~
-}
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+effect_GX: a vector containing the effect sizes of p SNPs on X.
+se_GX: a vector containing the standard errors of effect_GX. Do not specify this if this information is unavailable, in which case TEDE-Sc2 and TEDE-aSPU2 will not be performed.
+effect_GY: a vector containing the effect sizes of p SNPs on Y.
+se_GY: a vector containing the standard errors of effect_GY.
+GX_joint: FALSE: the G->X effects are based on marginal models; TRUE: the G->X effects are based on joint models.
+GY_joint: FALSE: the G->Y effects are based on marginal models; TRUE: the G->Y effects are based on joint models.
+n1: the sample size used to get effect_GX. No need to specify this if GX_joint is TRUE.
+n2: the sample size used to get effect_GY. No need to specify this if GY_joint is TRUE.
+LDcov: a covariance matrix of the p SNPs estimated from a reference panel.
+correlated_snps: whether the SNPs are correlated. Usually MR uses uncorrelated SNPs, and TWAS uses correlated SNPs.
+method: "aSPU": TEDE-aSPU (and TEDE-aSPU2); "score": TEDE-Sc (and TEDE-Sc2).
+distribution_based: FALSE: apply the standard aSPU test with summary statistics; TRUE: apply the distribution-based aSPU test. No need to specify this if method is "score".
+n.perm: the number of iterations for the aSPU test. No need to specify this if distribution_based is TRUE.
 
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
-\examples{
+result: a table containing the p-values.
+
+
+Example:
 library(aSPU)
 library(TEDE)
 
@@ -139,6 +82,3 @@ TEDE(effect_GX=effect_GX,effect_GY=effect_GY,se_GY=se_GY,GX_joint=TRUE,n1=n1,n2=
 
 #TEDE-aSPU only (TEDE-aSPU2 cannot be applied since se(effect_GX) is not available)
 TEDE(effect_GX=effect_GX,effect_GY=effect_GY,se_GY=se_GY,GX_joint=TRUE,n1=n1,n2=n2,LDcov=LDcov,correlated_snps=TRUE,method="aSPU",distribution_based=TRUE)
-
-
-}
