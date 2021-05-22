@@ -9,8 +9,8 @@ Required packages: aSPU, jointsum
 Usage:
 TEDE(effect_GX,se_GX=c(),effect_GY,se_GY,GX_joint=FALSE,GY_joint=FALSE,n1,n2,LDcov,correlated_snps=TRUE,method="aSPU",distribution_based=FALSE,n.perm=1000)
 
-effect_GX: a vector containing the effect sizes of p SNPs on X.<br />
-se_GX: a vector containing the standard errors of effect_GX. Do not specify this if this information is unavailable, in which case TEDE-Sc2 and TEDE-aSPU2 will not be performed.<br />
+**effect_GX**: a vector containing the effect sizes of p SNPs on X.<br />
+**se_GX** a vector containing the standard errors of effect_GX. Do not specify this if this information is unavailable, in which case TEDE-Sc2 and TEDE-aSPU2 will not be performed.<br />
 effect_GY: a vector containing the effect sizes of p SNPs on Y.<br />
 se_GY: a vector containing the standard errors of effect_GY.<br />
 GX_joint: FALSE: the G->X effects are based on marginal models; TRUE: the G->X effects are based on joint models.<br />
