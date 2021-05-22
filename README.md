@@ -1,5 +1,6 @@
 # TEDE
 TEsting Direct Effects for MR (Mendelian Randomization) or TWAS (Transcriptome-Wide Association Studies)
+Authors: Yangqing Deng and Wei Pan
 
 Please intall the package (TEDE_0.19.tar.gz) and check the help document
 ?TEDE
