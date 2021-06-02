@@ -22,7 +22,7 @@ Input:<br />
 **LDcov**: a covariance matrix of the p SNPs estimated from a reference panel.<br />
 **correlated_snps**: whether the SNPs are correlated. Usually MR uses uncorrelated SNPs, and TWAS uses correlated SNPs.<br />
 **method**: "aSPU": TEDE-aSPU (and TEDE-aSPU2); "score": TEDE-Sc (and TEDE-Sc2).<br />
-**distribution_based**: FALSE: apply the standard aSPU test with summary statistics; TRUE: apply the distribution-based aSPU test. No need to specify this if method is "score".
+**distribution_based**: FALSE: apply the standard aSPU test with summary statistics; TRUE: apply the distribution-based aSPU test. No need to specify this if method is "score".<br />
 **n.perm**: the number of iterations for the aSPU test. No need to specify this if distribution_based is TRUE.
 
 Output:<br />
