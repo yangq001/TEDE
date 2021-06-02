@@ -7,6 +7,9 @@ Please intall the package (TEDE_0.31.tar.gz) and check the help document
 
 Required packages: aSPU, jointsum
 
+
+<br /><br />
+
 Usage:
 TEDE(effect_GX,se_GX=c(),effect_GY,se_GY,GX_joint=FALSE,GY_joint=FALSE,n1,n2,LDcov,correlated_snps=TRUE,method="aSPU",distribution_based=FALSE,n.perm=1000)
 
